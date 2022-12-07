@@ -6,10 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DevExpress.Web.ASPxDataView;
-using DevExpress.Web.ASPxEditors;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxPanel;
+using DevExpress.Web;
 
 public partial class _Default : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
@@ -26,7 +23,7 @@ public partial class _Default : System.Web.UI.Page {
     public Color SetPanelColor(object dataItem) {
         return (IsSuitableItem(dataItem)) ? Color.LightGreen : Color.Empty;
     }
-    protected void ASPxDataView1_CustomCallback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e) {
+    protected void ASPxDataView1_CustomCallback(object sender, DevExpress.Web.CallbackEventArgsBase e) {
         List<DataRowView> selectResult = Products.Select(DataSourceSelectArguments.Empty).Cast<DataRowView>().ToList();
         for(int i = 0; i < selectResult.Count; i++) {
             if(IsSuitableItem(selectResult[i])) {
